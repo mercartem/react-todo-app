@@ -1,0 +1,19 @@
+.li {
+  width: 40%;
+  background-color: white;
+  margin: 15px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 0;
+  color: black;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.todoIcon {
+  font-size: 1.8rem;
+  margin-right: 10px;
+  color: teal;
+}
