@@ -1,25 +1,34 @@
 import { useState } from 'react';
-import Button from '../UI/Button';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './TodoForm.module.css';
+import Button from '../UI/Button';
 
 const TodoForm = ({ setTodos, todos }) => {
   const [text, setText] = useState('');
-  const handleFormSubmit = (event) => {
+  const addTodo = (event) => {
+    const newTodo = {
+      text,
+      isCpmpleted: false,
+      id: uuidv4(),
+    };
     event.preventDefault();
-    setTodos([...todos, text]);
+    setTodos([...todos, newTodo]);
     setText('');
   };
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input
-        className={styles.input}
-        onChange={(e) => setText(e.target.value)}
-        type="text"
-        placeholder="Enter new todo"
-        value={text}
-      />
-      <Button type="submit" />
-    </form>
+    <div className={styles.todoFormContainer}>
+      <form onSubmit={addTodo}>
+        <input
+          onChange={(e) => setText(e.target.value)}
+          type="text"
+          placeholder="Enter new todo"
+          value={text}
+        />
+        <Button type="submit" title="Submit">
+          Submit
+        </Button>
+      </form>
+    </div>
   );
 };
 

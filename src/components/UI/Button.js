@@ -1,7 +1,12 @@
 import styles from './Button.module.css';
 
-const Button = () => {
-  return <button className={styles.button}>Submit</button>;
+const Button = (props) => {
+  const { children, disabled = false } = props;
+  return (
+    <button {...props} className={styles.button} disabled={disabled}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
